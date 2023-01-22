@@ -7,18 +7,7 @@ import (
 	"strconv"
 	"strings"
 )
-func greetings( n string){
-	fmt.Println("good morning",n)
-}
-func goodbye( n string){
-	fmt.Println("bye bye",n)
-}
 
-func kichdi(n[]string,f func(string)){
-	for _,v := range n{
-		f(v)
-	}
-}
 func main(){
 	mybill := createBill() 
 	promptOptions(mybill)
@@ -27,7 +16,7 @@ func main(){
 func promptOptions(b bill){
 	reader := bufio.NewReader(os.Stdin)
 	opt,_ := getInput("choose option a- add item, s - save bill, t - add tip", reader)
-	// fmt.Println(opt)
+
 	switch opt {
 	case "a": 
 	name, _ := getInput("Item Name: ",reader)
@@ -69,13 +58,9 @@ func getInput(prompt string,r *bufio.Reader)(string,error){
 }
 func createBill() bill{
 	reader := bufio.NewReader(os.Stdin)
-	// fmt.Println("Create a new bill")
-	// name,_ := reader.ReadString('\n')
-	// name = strings.TrimSpace(name)
 	name ,_ := getInput("Create a new bill",reader)
 
 	b:= makenewbill(name)
 	fmt.Println("Created the bill - ", b.name)
 	return b
 }
-
